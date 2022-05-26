@@ -61,8 +61,8 @@ void insertAplikasi(list &L, infotype dataBaru);
 
 int eksekusi(address P, int durasi);
 
-void eksekusiMulti(list &L, address &current, int N, int duration);
-
 void sortList(list &L);
+
+void eksekusiMulti(list &L, address &current, int N, int duration);
 
 #endif //STD_MOD7_DS4501_1305213031_ARN_SLL_CIRCULAR_H

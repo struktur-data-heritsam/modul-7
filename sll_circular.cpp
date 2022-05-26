@@ -8,9 +8,8 @@ void createList(list &L) {
   first(L) = nil;
 }
 
-
 address createElement(infotype dataBaru) {
-  address P = new elmList;
+  address P = new elmList();
 
   info(P) = dataBaru;
   next(P) = nil;
@@ -208,6 +207,33 @@ int eksekusi(address P, int durasi) {
   return result;
 }
 
+void sortList(list &L) {
+  address P, Q, Max;
+  infotype temp;
+
+  P = first(L);
+
+  while (next(P) != first(L)) {
+    Max = P;
+    Q = next(P);
+
+    while (next(Q) != first(L)) {
+      if (info(Q).prioritas > info(Max).prioritas) {
+        temp = info(Q);
+      }
+      Q = next(Q);
+    }
+
+    if (info(Q).prioritas > info(Max).prioritas) {
+      temp = info(P);
+      info(P) = info(Q);
+      info(Q) = temp;
+    }
+
+    P = next(P);
+  }
+}
+
 void eksekusiMulti(list &L, address &current, int N, int duration) {
   address P;
   int i = 0;
@@ -229,29 +255,4 @@ void eksekusiMulti(list &L, address &current, int N, int duration) {
   }
 
   sortList(L);
-}
-
-void sortList(list &L) {
-  address P, Q, Max;
-  infotype temp;
-
-  P = first(L);
-
-  while (next(P) != first(L)) {
-    Max = P;
-    Q = next(P);
-
-    while (next(Q) != first(L)) {
-      if (info(Q).prioritas > info(Max).prioritas) {
-        temp = info(Q);
-      }
-      Q = next(Q);
-    }
-
-    temp = info(P);
-    info(P) = info(Q);
-    info(Q) = temp;
-
-    P = next(P);
-  }
 }
